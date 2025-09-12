@@ -1,0 +1,12 @@
+D:\sites\solana-swift\target\debug\deps\spl_pod-e9e8153c9f3af9dd.d: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\bytemuck.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\error.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\optional_keys.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\primitives.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\slice.rs
+
+D:\sites\solana-swift\target\debug\deps\spl_pod-e9e8153c9f3af9dd.dll: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\bytemuck.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\error.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\optional_keys.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\primitives.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\slice.rs
+
+D:\sites\solana-swift\target\debug\deps\libspl_pod-e9e8153c9f3af9dd.rlib: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\bytemuck.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\error.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\optional_keys.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\primitives.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\slice.rs
+
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\lib.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\bytemuck.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\error.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\optional_keys.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\primitives.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-pod-0.1.0\src\slice.rs:
