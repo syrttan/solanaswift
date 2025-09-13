@@ -1,0 +1,10 @@
+D:\sites\solana-swift\target\debug\deps\anchor_spl-a0df24a750c518ad.d: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\associated_token.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\mint.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token_2022.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token_interface.rs
+
+D:\sites\solana-swift\target\debug\deps\libanchor_spl-a0df24a750c518ad.rmeta: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\associated_token.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\mint.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token_2022.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token_interface.rs
+
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\lib.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\associated_token.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\mint.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token_2022.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\anchor-spl-0.29.0\src\token_interface.rs:

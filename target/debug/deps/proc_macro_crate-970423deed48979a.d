@@ -1,0 +1,7 @@
+D:\sites\solana-swift\target\debug\deps\proc_macro_crate-970423deed48979a.d: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\proc-macro-crate-0.1.5\src\lib.rs
+
+D:\sites\solana-swift\target\debug\deps\libproc_macro_crate-970423deed48979a.rlib: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\proc-macro-crate-0.1.5\src\lib.rs
+
+D:\sites\solana-swift\target\debug\deps\libproc_macro_crate-970423deed48979a.rmeta: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\proc-macro-crate-0.1.5\src\lib.rs
+
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\proc-macro-crate-0.1.5\src\lib.rs:

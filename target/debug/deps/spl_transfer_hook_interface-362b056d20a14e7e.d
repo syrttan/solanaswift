@@ -1,0 +1,9 @@
+D:\sites\solana-swift\target\debug\deps\spl_transfer_hook_interface-362b056d20a14e7e.d: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\error.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\instruction.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\offchain.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\onchain.rs
+
+D:\sites\solana-swift\target\debug\deps\libspl_transfer_hook_interface-362b056d20a14e7e.rmeta: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\error.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\instruction.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\offchain.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\onchain.rs
+
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\lib.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\error.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\instruction.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\offchain.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-transfer-hook-interface-0.9.0\src\onchain.rs:

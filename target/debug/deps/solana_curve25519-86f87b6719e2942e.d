@@ -1,0 +1,10 @@
+D:\sites\solana-swift\target\debug\deps\solana_curve25519-86f87b6719e2942e.d: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\curve_syscall_traits.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\edwards.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\errors.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\ristretto.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\scalar.rs
+
+D:\sites\solana-swift\target\debug\deps\libsolana_curve25519-86f87b6719e2942e.rmeta: C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\lib.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\curve_syscall_traits.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\edwards.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\errors.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\ristretto.rs C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\scalar.rs
+
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\lib.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\curve_syscall_traits.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\edwards.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\errors.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\ristretto.rs:
+C:\Users\syrtt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\solana-curve25519-2.3.9\src\scalar.rs:

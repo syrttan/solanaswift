@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: solanaswift
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: ohio
+    branch: main
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SOLANA_NETWORK
+        value: devnet
+      - key: NEXT_PUBLIC_RPC_URL
+        value: https://api.devnet.solana.com
+      - key: NEXT_PUBLIC_PROGRAM_ID
+        value: 11111111111111111111111111111112
