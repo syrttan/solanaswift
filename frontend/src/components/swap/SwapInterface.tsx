@@ -13,7 +13,7 @@ import { SwapSettings } from './SwapSettings'
 import { SwapDetails } from './SwapDetails'
 import { useProgram } from '@/hooks/useProgram'
 import { usePoolStore, TokenInfo } from '@/stores/poolStore'
-import { calculateSwapOutput, calculatePriceImpact, parseTokenAmount, formatTokenAmount } from '@/lib/anchor'
+import { calculateSwapOutput, calculatePriceImpact, parseTokenAmount, formatTokenAmount, fetchPoolData, fetchTokenBalance, getPoolAddress } from '@/lib/anchor'
 
 export const SwapInterface: FC = () => {
   const { publicKey } = useWallet()
@@ -36,6 +36,9 @@ export const SwapInterface: FC = () => {
   const [priceImpact, setPriceImpact] = useState<number>(0)
   const [minimumReceived, setMinimumReceived] = useState<string>('0')
   const [currentFee, setCurrentFee] = useState<number>(30) // 0.3% default
+  const [poolData, setPoolData] = useState<any>(null)
+  const [tokenBalances, setTokenBalances] = useState<{ [key: string]: string }>({})
+  const [fetchingData, setFetchingData] = useState(false)
 
   // Calculate output amount when inputs change
   useEffect(() => {
@@ -48,24 +51,79 @@ export const SwapInterface: FC = () => {
     }
   }, [tokenIn, tokenOut, amountIn, selectedPool])
 
-  const calculateAmountOut = async () => {
+  // Fetch pool data and balances
+  useEffect(() => {
+    if (tokenIn && tokenOut && program && connection) {
+      fetchPoolAndBalanceData()
+    }
+  }, [tokenIn, tokenOut, program, connection, publicKey])
+
+  const fetchPoolAndBalanceData = async () => {
+    if (!tokenIn || !tokenOut || !program || !connection) return
+    
+    setFetchingData(true)
+    try {
+      // Fetch pool data
+      const pool = await fetchPoolData(program, tokenIn.mint, tokenOut.mint)
+      setPoolData(pool)
+      
+      if (pool) {
+        setCurrentFee(pool.baseFeeBps + pool.volatilityFeeBps)
+      }
+      
+      // Fetch token balances if user is connected
+      if (publicKey) {
+        const balances: { [key: string]: string } = {}
+        
+        const balanceA = await fetchTokenBalance(connection, tokenIn.mint, publicKey)
+        const balanceB = await fetchTokenBalance(connection, tokenOut.mint, publicKey)
+        
+        balances[tokenIn.mint.toString()] = formatTokenAmount(balanceA, tokenIn.decimals)
+        balances[tokenOut.mint.toString()] = formatTokenAmount(balanceB, tokenOut.decimals)
+        
+        setTokenBalances(balances)
+      }
+    } catch (error) {
+      console.error('Error fetching pool data:', error)
+    } finally {
+      setFetchingData(false)
+    }
+  }
+
+  const calculateAmountOut = useCallback(async () => {
     if (!tokenIn || !tokenOut || !amountIn) return
 
     try {
-      // Find pool for this pair
-      const mockReserveA = new BN('1000000000000') // 1000 tokens
-      const mockReserveB = new BN('50000000000') // 50000 tokens (assuming 1:50 ratio)
+      let reserveIn: BN, reserveOut: BN
+      
+      if (poolData && poolData.isInitialized) {
+        // Use real pool data
+        const isAToB = tokenIn.mint.equals ? tokenIn.mint.equals(poolData.tokenAMint) : 
+                       tokenIn.mint.toString() === poolData.tokenAMint.toString()
+        
+        if (isAToB) {
+          reserveIn = poolData.reserveA
+          reserveOut = poolData.reserveB
+        } else {
+          reserveIn = poolData.reserveB
+          reserveOut = poolData.reserveA
+        }
+      } else {
+        // Fallback to mock data if pool doesn't exist
+        reserveIn = new BN('1000000000000') // 1000 tokens
+        reserveOut = new BN('50000000000') // 50 tokens
+      }
       
       const amountInBN = parseTokenAmount(amountIn, tokenIn.decimals)
       
       // Calculate output with current fee
-      const output = calculateSwapOutput(amountInBN, mockReserveA, mockReserveB, currentFee)
+      const output = calculateSwapOutput(amountInBN, reserveIn, reserveOut, currentFee)
       const outputFormatted = formatTokenAmount(output, tokenOut.decimals)
       
       setAmountOut(outputFormatted)
       
       // Calculate price impact
-      const impact = calculatePriceImpact(amountInBN, mockReserveA, mockReserveB)
+      const impact = calculatePriceImpact(amountInBN, reserveIn, reserveOut)
       setPriceImpact(impact)
       
       // Calculate minimum received with slippage
@@ -77,7 +135,7 @@ export const SwapInterface: FC = () => {
       setAmountOut('0')
       setPriceImpact(0)
     }
-  }
+  }, [tokenIn, tokenOut, amountIn, poolData, currentFee, slippage])
 
   const handleSwapTokens = () => {
     const tempToken = tokenIn
@@ -90,12 +148,13 @@ export const SwapInterface: FC = () => {
   }
 
   const handleMaxClick = () => {
-    // TODO: Implement actual balance fetching
-    setAmountIn('100') // Mock max balance
+    if (tokenIn && tokenBalances[tokenIn.mint.toString()]) {
+      setAmountIn(tokenBalances[tokenIn.mint.toString()])
+    }
   }
 
   const executeSwap = async () => {
-    if (!publicKey || !program || !tokenIn || !tokenOut) {
+    if (!publicKey || !program || !tokenIn || !tokenOut || !connection) {
       toast.error('Please connect your wallet')
       return
     }
@@ -105,18 +164,50 @@ export const SwapInterface: FC = () => {
       return
     }
 
+    if (!poolData || !poolData.isInitialized) {
+      toast.error('Pool not found or not initialized')
+      return
+    }
+
     setLoading(true)
     
     try {
-      // TODO: Implement actual swap execution
-      // This is a mock implementation for demo purposes
-      
       toast.loading('Preparing swap transaction...', { id: 'swap' })
       
-      // Simulate transaction time
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      const { getAssociatedTokenAddress, TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID } = await import('@solana/spl-token')
+      const { SystemProgram } = await import('@solana/web3.js')
       
-      // Mock success
+      // Calculate amounts
+      const amountInBN = parseTokenAmount(amountIn, tokenIn.decimals)
+      const minimumAmountOutBN = parseTokenAmount(minimumReceived, tokenOut.decimals)
+      
+      // Get token accounts
+      const userTokenIn = await getAssociatedTokenAddress(tokenIn.mint, publicKey)
+      const userTokenOut = await getAssociatedTokenAddress(tokenOut.mint, publicKey)
+      
+      // Determine which vault is which based on token order
+      const isAToB = tokenIn.mint.toString() === poolData.tokenAMint.toString()
+      const poolTokenIn = isAToB ? poolData.tokenAVault : poolData.tokenBVault
+      const poolTokenOut = isAToB ? poolData.tokenBVault : poolData.tokenAVault
+      
+      // Execute swap
+      const txId = await program.methods
+        .swap(amountInBN, minimumAmountOutBN)
+        .accounts({
+          pool: poolData.address,
+          user: publicKey,
+          userTokenIn,
+          userTokenOut,
+          poolTokenIn,
+          poolTokenOut,
+          tokenInMint: tokenIn.mint,
+          tokenOutMint: tokenOut.mint,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+        })
+        .rpc()
+      
       toast.success(
         `Successfully swapped ${amountIn} ${tokenIn.symbol} for ${amountOut} ${tokenOut.symbol}`,
         { 
@@ -125,13 +216,26 @@ export const SwapInterface: FC = () => {
         }
       )
       
-      // Reset form
+      console.log('Swap transaction ID:', txId)
+      
+      // Reset form and refresh data
       setAmountIn('')
       setAmountOut('')
+      await fetchPoolAndBalanceData()
       
     } catch (error: any) {
       console.error('Swap error:', error)
-      toast.error(error.message || 'Swap failed', { id: 'swap' })
+      
+      let errorMessage = 'Swap failed'
+      if (error.message?.includes('SlippageExceeded')) {
+        errorMessage = 'Slippage exceeded. Try increasing slippage tolerance.'
+      } else if (error.message?.includes('InsufficientLiquidity')) {
+        errorMessage = 'Insufficient liquidity in the pool'
+      } else if (error.message?.includes('InsufficientAmount')) {
+        errorMessage = 'Insufficient token balance'
+      }
+      
+      toast.error(errorMessage, { id: 'swap' })
     } finally {
       setLoading(false)
     }
@@ -204,7 +308,7 @@ export const SwapInterface: FC = () => {
               onTokenSelect={setTokenIn}
               onAmountChange={setAmountIn}
               tokenList={tokenList}
-              balance="100.00" // Mock balance
+              balance={tokenIn ? tokenBalances[tokenIn.mint.toString()] || '0.00' : '0.00'}
             />
           </div>
 
@@ -228,7 +332,7 @@ export const SwapInterface: FC = () => {
               onAmountChange={() => {}} // Read only
               tokenList={tokenList}
               readOnly
-              balance="0.00" // Mock balance
+              balance={tokenOut ? tokenBalances[tokenOut.mint.toString()] || '0.00' : '0.00'}
             />
           </div>
 

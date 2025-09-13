@@ -1,10 +1,28 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { SwapInterface } from '@/components/swap/SwapInterface'
-import { PoolAnalytics } from '@/components/analytics/PoolAnalytics'
 import { Header } from '@/components/common/Header'
 import { Footer } from '@/components/common/Footer'
 import { motion } from 'framer-motion'
+
+// Lazy load heavy analytics component for better initial loading
+const PoolAnalytics = dynamic(
+  () => import('@/components/analytics/PoolAnalytics').then((mod) => ({ default: mod.PoolAnalytics })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6 animate-pulse">
+        <div className="h-6 bg-gray-700 rounded w-1/3 mb-4"></div>
+        <div className="space-y-3">
+          <div className="h-4 bg-gray-700 rounded w-full"></div>
+          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
+          <div className="h-4 bg-gray-700 rounded w-1/2"></div>
+        </div>
+      </div>
+    )
+  }
+)
 
 export default function Home() {
   return (

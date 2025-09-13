@@ -7,11 +7,11 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 
-## 🎯 Hackathon Submission - Solana Day 2024
+## 🎯 Hackathon Submission - Solana Day 2025
 
-**Team:** Syrttan  
+**Team:** Syrttan (Solo Full-Stack Developer)  
 **Prize Pool:** $5,000 | $3,000 | $2,000
-**Deadline:** September 13, 2024, 23:59 GMT+5
+**Deadline:** September 13, 2025, 23:59 GMT+5
 
 ## 🌟 Overview
 
@@ -257,19 +257,19 @@ NEXT_PUBLIC_ENABLE_ANALYTICS=true
 - [x] Frontend interface
 - [x] Devnet deployment
 
-### 🔄 Phase 2: Enhancement (Q4 2024)
+### 🔄 Phase 2: Enhancement (Q4 2025)
 - [ ] Mainnet deployment
 - [ ] Professional security audit
 - [ ] Mobile app
 - [ ] API for developers
 
-### 🚀 Phase 3: Expansion (Q1 2025)
+### 🚀 Phase 3: Expansion (Q1 2026)
 - [ ] Cross-chain bridges
 - [ ] Limit orders
 - [ ] Options trading
 - [ ] DAO governance
 
-### 🌍 Phase 4: Scale (Q2 2025)
+### 🌍 Phase 4: Scale (Q2 2026)
 - [ ] Institutional features
 - [ ] Advanced analytics
 - [ ] White-label solutions
@@ -277,10 +277,11 @@ NEXT_PUBLIC_ENABLE_ANALYTICS=true
 
 ## 👥 Team
 
-- **Lead Developer:** Full-stack Solana developer
-- **Smart Contract Specialist:** Rust & Anchor expert
-- **Frontend Engineer:** React & TypeScript specialist
-- **Designer:** UI/UX and brand design
+**Syrttan** - Solo Full-Stack Developer
+- **Expertise:** Solana blockchain development, Rust, Anchor framework
+- **Frontend:** React, Next.js, TypeScript specialist  
+- **Backend:** Smart contracts, DeFi protocols, AMM algorithms
+- **UI/UX:** Modern interface design and user experience
 
 ## 📊 Demo Script (5-minute presentation)
 
@@ -326,6 +327,6 @@ If you like this project, please ⭐ star this repository and share it with othe
 
 ---
 
-**Built with ❤️ for Solana Day 2024 Hackathon**
+**Built with ❤️ for Solana Day 2025 Hackathon**
 
 *Ready to revolutionize DeFi with adaptive pricing! 🚀*

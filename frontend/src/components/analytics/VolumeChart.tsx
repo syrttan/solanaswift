@@ -1,7 +1,17 @@
 'use client'
 
 import { FC, useMemo } from 'react'
-import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ComposedChart, Bar } from 'recharts'
+import dynamic from 'next/dynamic'
+
+// Lazy load Recharts components for better performance
+const ComposedChart = dynamic(() => import('recharts').then((mod) => mod.ComposedChart), { ssr: false })
+const Bar = dynamic(() => import('recharts').then((mod) => mod.Bar), { ssr: false })
+const Line = dynamic(() => import('recharts').then((mod) => mod.Line), { ssr: false })
+const XAxis = dynamic(() => import('recharts').then((mod) => mod.XAxis), { ssr: false })
+const YAxis = dynamic(() => import('recharts').then((mod) => mod.YAxis), { ssr: false })
+const CartesianGrid = dynamic(() => import('recharts').then((mod) => mod.CartesianGrid), { ssr: false })
+const Tooltip = dynamic(() => import('recharts').then((mod) => mod.Tooltip), { ssr: false })
+const ResponsiveContainer = dynamic(() => import('recharts').then((mod) => mod.ResponsiveContainer), { ssr: false })
 
 interface VolumeChartProps {
   timeRange: '24h' | '7d' | '30d'

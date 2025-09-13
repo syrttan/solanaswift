@@ -1,8 +1,4 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{
-    associated_token::AssociatedToken,
-    token::{self, Mint, Token, TokenAccount, Transfer},
-};
 
 pub mod error;
 pub mod instructions;
@@ -12,7 +8,7 @@ use error::*;
 use instructions::*;
 use state::*;
 
-declare_id!("11111111111111111111111111111112");
+declare_id!("EaJwZTkBj5Cn26kPtjUWNANTGfd8gK9zfYyP8EPDQ5F8");
 
 #[program]
 pub mod solanaswift {

@@ -8,14 +8,14 @@ const createJestConfig = nextJest({
 // Add any custom config to be passed to Jest
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  moduleNameMapping: {
+  moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you based on your tsconfig.json paths)
     '^@/(.*)$': '<rootDir>/src/$1',
+    // Mock problematic ES modules
+    '^uuid$': '<rootDir>/src/__mocks__/uuid.js',
+    '^@solana/web3\\.js$': '<rootDir>/src/__mocks__/solana-web3.js',
   },
   testEnvironment: 'jest-environment-jsdom',
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
-  },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
@@ -27,7 +27,7 @@ const customJestConfig = {
   ],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   transformIgnorePatterns: [
-    '/node_modules/',
+    'node_modules/(?!(uuid|@solana|@coral-xyz|jayson|bs58|base-x|@noble|safe-buffer)/)',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
 }

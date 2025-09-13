@@ -65,7 +65,8 @@ export const PoolAnalytics: FC = () => {
   }
 
   const getChangeIcon = (change: number) => {
-    return change >= 0 ? TrendingUpIcon : TrendingDownIcon
+    const Icon = change >= 0 ? TrendingUpIcon : TrendingDownIcon
+    return <Icon className="w-3 h-3" />
   }
 
   return (
@@ -110,7 +111,7 @@ export const PoolAnalytics: FC = () => {
                 <InfoIcon className="w-3 h-3 text-gray-500" />
               </div>
               <div className={`flex items-center space-x-1 ${getChangeColor(data.tvlChange)}`}>
-                {getChangeIcon(data.tvlChange)({ className: "w-3 h-3" })}
+                {getChangeIcon(data.tvlChange)}
                 <span className="text-xs font-medium">{Math.abs(data.tvlChange).toFixed(1)}%</span>
               </div>
             </div>
@@ -127,7 +128,7 @@ export const PoolAnalytics: FC = () => {
                 <span className="text-sm text-gray-400">24h Volume</span>
               </div>
               <div className={`flex items-center space-x-1 ${getChangeColor(data.volumeChange)}`}>
-                {getChangeIcon(data.volumeChange)({ className: "w-3 h-3" })}
+                {getChangeIcon(data.volumeChange)}
                 <span className="text-xs font-medium">{Math.abs(data.volumeChange).toFixed(1)}%</span>
               </div>
             </div>
@@ -144,7 +145,7 @@ export const PoolAnalytics: FC = () => {
                 <span className="text-sm text-gray-400">24h Fees</span>
               </div>
               <div className={`flex items-center space-x-1 ${getChangeColor(data.feeChange)}`}>
-                {getChangeIcon(data.feeChange)({ className: "w-3 h-3" })}
+                {getChangeIcon(data.feeChange)}
                 <span className="text-xs font-medium">{Math.abs(data.feeChange).toFixed(2)}%</span>
               </div>
             </div>

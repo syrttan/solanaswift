@@ -134,3 +134,57 @@ export const parseTokenAmount = (amount: string, decimals: number = 9): BN => {
   const fractionPadded = fraction.padEnd(decimals, '0').slice(0, decimals)
   return new BN(whole + fractionPadded)
 }
+
+// Pool data fetching functions
+export const fetchPoolData = async (
+  program: any,
+  tokenAMint: PublicKey,
+  tokenBMint: PublicKey
+): Promise<PoolData | null> => {
+  try {
+    const [poolAddress] = getPoolAddress(tokenAMint, tokenBMint)
+    const poolAccount = await program.account.liquidityPool.fetch(poolAddress)
+    
+    return {
+      address: poolAddress,
+      authority: poolAccount.authority,
+      tokenAMint: poolAccount.tokenAMint,
+      tokenBMint: poolAccount.tokenBMint,
+      tokenAVault: poolAccount.tokenAVault,
+      tokenBVault: poolAccount.tokenBVault,
+      lpMint: poolAccount.lpMint,
+      reserveA: poolAccount.reserveA,
+      reserveB: poolAccount.reserveB,
+      baseFeeBps: poolAccount.baseFeeBps,
+      volatilityFeeBps: poolAccount.volatilityFeeBps,
+      lastPrice: poolAccount.lastPrice,
+      lastUpdateSlot: poolAccount.lastUpdateSlot,
+      priceHistory: poolAccount.priceHistory,
+      historyIndex: poolAccount.historyIndex,
+      totalVolumeUsd: poolAccount.totalVolumeUsd,
+      totalFeesCollected: poolAccount.totalFeesCollected,
+      createdAt: poolAccount.createdAt,
+      isInitialized: poolAccount.isInitialized,
+      bump: poolAccount.bump,
+    }
+  } catch (error) {
+    console.error('Error fetching pool data:', error)
+    return null
+  }
+}
+
+export const fetchTokenBalance = async (
+  connection: Connection,
+  tokenMint: PublicKey,
+  owner: PublicKey
+): Promise<BN> => {
+  try {
+    const { getAssociatedTokenAddress, getAccount } = await import('@solana/spl-token')
+    const tokenAddress = await getAssociatedTokenAddress(tokenMint, owner)
+    const tokenAccount = await getAccount(connection, tokenAddress)
+    return new BN(tokenAccount.amount.toString())
+  } catch (error) {
+    console.error('Error fetching token balance:', error)
+    return new BN(0)
+  }
+}

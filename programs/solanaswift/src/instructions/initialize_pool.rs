@@ -86,6 +86,7 @@ pub fn handler(ctx: Context<InitializePool>, fee_tier: u16) -> Result<()> {
     pool.total_fees_collected = 0;
     pool.created_at = Clock::get()?.unix_timestamp;
     pool.is_initialized = true;
+    pool.is_locked = false;
     
     pool.bump = ctx.bumps.pool;
 

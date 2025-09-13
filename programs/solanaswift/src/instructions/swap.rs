@@ -62,6 +62,9 @@ pub fn handler(ctx: Context<Swap>, amount_in: u64, minimum_amount_out: u64) -> R
 
     let pool = &mut ctx.accounts.pool;
     
+    // Reentrancy guard
+    pool.lock()?;
+    
     // Determine swap direction
     let (reserve_in, reserve_out, is_a_to_b) = if ctx.accounts.token_in_mint.key() == pool.token_a_mint {
         (pool.reserve_a, pool.reserve_b, true)
@@ -166,6 +169,9 @@ pub fn handler(ctx: Context<Swap>, amount_in: u64, minimum_amount_out: u64) -> R
         fee_bps,
         fee_amount
     );
+
+    // Unlock before returning
+    pool.unlock();
 
     Ok(())
 }

@@ -12,8 +12,8 @@ pub struct UpdateFees<'info> {
     )]
     pub pool: Account<'info, LiquidityPool>,
 
-    /// CHECK: This can be anyone since fee updates are automatic based on volatility
-    pub caller: Signer<'info>,
+    #[account(address = pool.authority)]
+    pub authority: Signer<'info>,
 }
 
 pub fn handler(ctx: Context<UpdateFees>) -> Result<()> {

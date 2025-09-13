@@ -26,12 +26,13 @@ pub struct LiquidityPool {
     pub total_fees_collected: u64,   // Total fees collected
     pub created_at: i64,             // Creation timestamp
     pub is_initialized: bool,        // Pool initialization flag
+    pub is_locked: bool,             // Reentrancy lock
     
     pub bump: u8,                    // PDA bump seed
 }
 
 impl LiquidityPool {
-    pub const LEN: usize = 8 + 32 * 6 + 8 * 4 + 2 * 2 + 8 * 52 + 1 + 16 + 8 + 8 + 1 + 1;
+    pub const LEN: usize = 8 + 32 * 6 + 8 * 4 + 2 * 2 + 8 * 52 + 1 + 16 + 8 + 8 + 1 + 1 + 1;
 
     pub fn calculate_adaptive_fee(&self) -> u16 {
         if self.history_index < 5 {
@@ -82,6 +83,16 @@ impl LiquidityPool {
         self.history_index = ((self.history_index as usize + 1) % 50) as u8;
         self.last_price = new_price;
     }
+
+    pub fn lock(&mut self) -> Result<()> {
+        require!(!self.is_locked, crate::error::SwapError::InvalidAuthority);
+        self.is_locked = true;
+        Ok(())
+    }
+
+    pub fn unlock(&mut self) {
+        self.is_locked = false;
+    }
 }
 
 impl Default for LiquidityPool {
@@ -105,6 +116,7 @@ impl Default for LiquidityPool {
             total_fees_collected: 0,
             created_at: 0,
             is_initialized: false,
+            is_locked: false,
             bump: 0,
         }
     }

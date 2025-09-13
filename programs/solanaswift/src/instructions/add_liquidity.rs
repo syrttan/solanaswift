@@ -212,14 +212,45 @@ impl IntegerSquareRoot for u128 {
             return 0;
         }
         
+        // Prevent overflow for very large numbers
+        if self > u64::MAX as u128 {
+            // For numbers larger than u64::MAX, we need to scale down
+            let scaled = self / 1_000_000; // Scale down by 1M to prevent overflow
+            let sqrt_scaled = (scaled as u64).integer_sqrt();
+            return sqrt_scaled * 1000; // Scale back up
+        }
+        
         let mut x = self;
         let mut y = (self + 1) / 2;
         
-        while y < x {
+        // Add iteration limit to prevent infinite loops
+        let mut iterations = 0;
+        while y < x && iterations < 100 {
             x = y;
             y = (y + self / y) / 2;
+            iterations += 1;
         }
         
-        x as u64
+        std::cmp::min(x as u64, u64::MAX)
+    }
+}
+
+impl IntegerSquareRoot for u64 {
+    fn integer_sqrt(self) -> u64 {
+        if self == 0 {
+            return 0;
+        }
+        
+        let mut x = self;
+        let mut y = (self + 1) / 2;
+        
+        let mut iterations = 0;
+        while y < x && iterations < 100 {
+            x = y;
+            y = (y + self / y) / 2;
+            iterations += 1;
+        }
+        
+        x
     }
 }
