@@ -7,7 +7,7 @@
     "anchor:deploy": "anchor deploy",
     "anchor:test": "anchor test",
     "test": "ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts",
-    "build": "anchor build && cd frontend && npm run build",
+    "build": "cd frontend && npm run build",
     "start": "cd frontend && npm run dev"
   },
   "dependencies": {
